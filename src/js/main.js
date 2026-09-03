@@ -117,10 +117,10 @@
             '</tbody></table>' +
           '</div>' +
         '</div>' +
-        '<div style="margin-top:80px;">' +
+        '<div style="margin-top:80px;text-align:center;">' +
           '<span class="sec-tag">FAQ</span>' +
-          '<h2 style="font-size:28px;margin-bottom:30px;">Frequently Asked Questions</h2>' +
-          '<div class="faq-container">' +
+          '<h2 style="font-size:28px;margin-bottom:30px;text-align:center;">Frequently Asked Questions</h2>' +
+          '<div class="faq-container" style="text-align:left;">' +
           service.faqs.map(function(faq, i) {
             return '<div class="faq-item' + (i === 0 ? ' active' : '') + '"><button class="faq-question">' + faq.q + '</button><div class="faq-answer"><p>' + faq.a + '</p></div></div>';
           }).join('') +

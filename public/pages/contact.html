@@ -14,7 +14,7 @@
   <!-- ════════════════════════════════════════════════════════
        HERO — WORKSHOP FRONT DESK
        ════════════════════════════════════════════════════════ -->
-  <section class="contact-hero">
+  <section class="contact-hero" style="    background: linear-gradient(180deg, var(--panel-2) 0%, var(--ink) 100%);">
     <div class="wrap contact-hero-inner">
       <div class="contact-hero-text">
         <span class="sec-tag">04 — CONTACT</span>
@@ -62,9 +62,11 @@
 
         <!-- Form -->
         <div class="contact-form-wrapper">
-          <span class="sec-tag">SEND A MESSAGE</span>
-          <h2 style="font-size:28px;margin:12px 0 8px;">Book A Service Or Ask A Question</h2>
-          <p style="color:var(--steel);font-size:15px;margin-bottom:32px;">Fill out the form and a master bike technician will respond within one business day.</p>
+          <div style="text-align: center; margin-bottom: 28px;">
+            <span class="sec-tag">SEND A MESSAGE</span>
+            <h2 style="font-size:28px;margin:12px 0 8px;">Book A Service Or Ask A Question</h2>
+            <p style="color:var(--steel);font-size:15px;max-width:540px;margin:0 auto;">Fill out the form and a master bike technician will respond within one business day.</p>
+          </div>
           <form data-type="contact" id="contactForm">
             <div class="form-row">
               <div class="form-group">
@@ -113,30 +115,64 @@
           </form>
         </div>
 
-        <!-- Hours & Info -->
-        <div class="contact-info-panel">
-          <div class="contact-info-block">
-            <h3>Workshop Hours</h3>
-            <ul class="contact-hours-list">
-              <li><span>Monday – Friday</span><span>8:00 AM – 6:30 PM</span></li>
-              <li><span>Saturday</span><span>8:00 AM – 5:00 PM</span></li>
-              <li><span>Sunday</span><span>Track &amp; Breakdown Only</span></li>
-            </ul>
+        <!-- Sidebar / Right Section: Hours, Breakdown, Map -->
+        <div class="contact-sidebar">
+          
+          <!-- Workshop Hours Card -->
+          <div class="contact-hours-card">
+            <div class="contact-card-head">
+              <div class="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="contact-card-title-group">
+                <h3>Workshop Operating Hours</h3>
+              </div>
+            </div>
+
+            <div class="hours-list">
+              <div class="hours-row">
+                <span class="hours-day">Monday – Friday</span>
+                <span class="hours-time">8:00 AM – 6:30 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Saturday</span>
+                <span class="hours-time">8:00 AM – 5:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Sunday</span>
+                <span class="hours-time closed">Track &amp; Breakdown Only</span>
+              </div>
+            </div>
+            <p class="hours-note">Walk-ins welcome for quick diagnostics &amp; fluid checks. Lift reservations recommended for dyno tuning and major service.</p>
           </div>
 
-          <div class="contact-info-block">
-            <h3>24/7 Breakdown &amp; Transport</h3>
-            <p style="color:var(--steel);font-size:14px;line-height:1.6;margin-bottom:12px;">Enclosed trailer breakdown recovery for motorcycles across the greater Chicago area.</p>
-            <a href="tel:+13125550148" class="contact-emergency-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              <span>+1 (312) 555-0148</span>
-            </a>
+          <!-- Workshop Location & Interactive Map Card -->
+          <div class="contact-location-card">
+            <div class="contact-card-head">
+              <div class="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-card-title-group">
+                <h3>Workshop Location</h3>
+                <p style="color:var(--steel);font-size:13px;margin:2px 0 0;">2847 W. Industrial Blvd, Chicago, IL 60622</p>
+              </div>
+            </div>
+
+            <!-- Integrated Interactive Map -->
+            <div class="contact-map-frame">
+              <iframe
+                title="Riderz Precision Motorcycle Workshop Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47525.26353982463!2d-87.71261545464195!3d41.89539209536839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2d3b450f37ab%3A0x2d1f77d3aa421cf1!2sWest%20Town%2C%20Chicago%2C%20IL!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                width="100%"
+                height="240"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
           </div>
 
-          <div class="contact-info-block">
-            <h3>Location</h3>
-            <p style="color:var(--steel);font-size:14px;line-height:1.6;">2847 W. Industrial Blvd, Chicago, IL 60622</p>
-          </div>
         </div>
 
       </div>

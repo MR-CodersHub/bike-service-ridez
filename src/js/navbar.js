@@ -52,11 +52,11 @@
       '<a href="' + basePath + 'public/pages/contact.html">Contact</a>' +
       '</nav>' +
       '<div class="navcta">' +
-      '<a href="' + basePath + 'public/pages/booking.html" class="btn btn-solid nav-book-btn">Book Service</a>' +
       '<div class="nav-toggles">' +
       '<button class="toggle-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">' + themeSvg + '</button>' +
       '<button class="toggle-btn" id="rtlToggle" title="Toggle RTL" aria-label="Toggle RTL">' + rtlSvg + '</button>' +
       '</div>' +
+      '<a href="' + basePath + 'public/pages/booking.html" class="btn btn-solid nav-book-btn">Book Service</a>' +
       '<button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>' +
       '</div>' +
       '</div>' +
@@ -64,13 +64,16 @@
 
     var mobileHTML =
       '<div class="mobile-menu" id="mobileMenu">' +
-      '<a href="' + basePath + 'index.html">Home</a>' +
-      '<a href="' + basePath + 'public/pages/home-2.html">Home 2</a>' +
-      '<a href="' + basePath + 'public/pages/about.html">About</a>' +
-      '<a href="' + basePath + 'public/pages/services.html">Services</a>' +
-      '<a href="' + basePath + 'public/pages/blog.html">Blog</a>' +
-      '<a href="' + basePath + 'public/pages/contact.html">Contact</a>' +
-      '<a href="' + basePath + 'public/pages/booking.html">Book Service</a>' +
+      '<button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>' +
+      '<div class="mobile-menu-inner">' +
+      '<a href="' + basePath + 'index.html" class="mobile-nav-link">Home</a>' +
+      '<a href="' + basePath + 'public/pages/home-2.html" class="mobile-nav-link">Home 2</a>' +
+      '<a href="' + basePath + 'public/pages/about.html" class="mobile-nav-link">About</a>' +
+      '<a href="' + basePath + 'public/pages/services.html" class="mobile-nav-link">Services</a>' +
+      '<a href="' + basePath + 'public/pages/blog.html" class="mobile-nav-link">Blog</a>' +
+      '<a href="' + basePath + 'public/pages/contact.html" class="mobile-nav-link">Contact</a>' +
+      '<a href="' + basePath + 'public/pages/booking.html" class="mobile-nav-link mobile-nav-cta">Book Service</a>' +
+      '</div>' +
       '</div>';
 
     if (existingHeader) {
@@ -121,6 +124,14 @@
     var mobileToggle = document.getElementById('mobileToggle');
     var mobileMenu = document.getElementById('mobileMenu');
     var mobileClose = document.getElementById('mobileClose');
+
+    function closeMobile() {
+      if (mobileMenu) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
     if (mobileToggle && mobileMenu) {
       mobileToggle.addEventListener('click', function () {
         mobileMenu.classList.add('active');
@@ -134,17 +145,28 @@
       });
     }
 
-    function closeMobile() {
-      if (mobileMenu) {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-      }
+    // Active page highlighting on desktop and mobile
+    var path = window.location.pathname;
+    var currentPage = path.split('/').pop().split('?')[0].split('#')[0] || 'index.html';
+    if (currentPage === '' || currentPage === '/') currentPage = 'index.html';
+
+    function isPageMatch(href) {
+      if (!href) return false;
+      var linkPage = href.split('/').pop().split('?')[0].split('#')[0];
+      if (linkPage === currentPage) return true;
+      if (currentPage === 'service-details.html' && linkPage === 'services.html') return true;
+      if (currentPage === 'blog-details.html' && linkPage === 'blog.html') return true;
+      return false;
     }
 
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.navlinks a').forEach(function (link) {
-      var href = link.getAttribute('href');
-      if (href && href.indexOf(currentPage) !== -1) {
+      if (isPageMatch(link.getAttribute('href'))) {
+        link.classList.add('active');
+      }
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(function (link) {
+      if (isPageMatch(link.getAttribute('href'))) {
         link.classList.add('active');
       }
     });
